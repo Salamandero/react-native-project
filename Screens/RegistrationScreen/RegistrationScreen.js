@@ -23,6 +23,7 @@ const initialState = {
 export default function RegistrationScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isShowPassword, setIsShowPassword] = useState(true);
+  const [nameFocusInput, setNameFocusInput] = useState(null);
   const [state, setState] = useState(initialState);
 
   const keyboardHide = () => {
@@ -91,9 +92,15 @@ export default function RegistrationScreen() {
             <View>
               <TextInput
                 placeholder="Username"
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  borderColor:
+                    nameFocusInput == "username" ? "#FF6C00" : "#E8E8E8",
+                }}
+                onBlur={() => setNameFocusInput(null)}
                 onFocus={() => {
                   setIsShowKeyboard(true);
+                  setNameFocusInput("username");
                 }}
                 onChangeText={(value) =>
                   setState((prevState) => ({ ...prevState, username: value }))
@@ -105,10 +112,16 @@ export default function RegistrationScreen() {
             <View>
               <TextInput
                 placeholder="Email"
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  borderColor:
+                    nameFocusInput == "email" ? "#FF6C00" : "#E8E8E8",
+                }}
+                onBlur={() => setNameFocusInput(null)}
                 textContentType="email"
                 onFocus={() => {
                   setIsShowKeyboard(true);
+                  setNameFocusInput("email");
                 }}
                 onChangeText={(value) =>
                   setState((prevState) => ({ ...prevState, email: value }))
@@ -119,7 +132,12 @@ export default function RegistrationScreen() {
             </View>
             <View>
               <TextInput
-                style={{ ...styles.input, marginBottom: 0 }}
+                style={{
+                  ...styles.input,
+                  marginBottom: 0,
+                  borderColor:
+                    nameFocusInput == "password" ? "#FF6C00" : "#E8E8E8",
+                }}
                 value={state.password}
                 placeholder="Password"
                 secureTextEntry={isShowPassword}
@@ -128,9 +146,11 @@ export default function RegistrationScreen() {
                 }
                 onFocus={() => {
                   setIsShowKeyboard(true);
+                  setNameFocusInput("password");
                 }}
-                autoCorrect={false}
+                onBlur={() => setNameFocusInput(null)}
                 onSubmitEditing={keyboardHideWithData}
+                autoCorrect={false}
               />
               {state.password.length > 0 && (
                 <TouchableOpacity

@@ -20,6 +20,7 @@ const initialState = {
 export default function LoginScreen() {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [isShowPassword, setIsShowPassword] = useState(true);
+  const [nameFocusInput, setNameFocusInput] = useState(null);
   const [state, setState] = useState(initialState);
 
   const keyboardHide = () => {
@@ -60,10 +61,16 @@ export default function LoginScreen() {
             <View>
               <TextInput
                 placeholder="Email"
-                style={styles.input}
+                style={{
+                  ...styles.input,
+                  borderColor:
+                    nameFocusInput == "email" ? "#FF6C00" : "#E8E8E8",
+                }}
+                onBlur={() => setNameFocusInput(null)}
                 textContentType="email"
                 onFocus={() => {
                   setIsShowKeyboard(true);
+                  setNameFocusInput("email");
                 }}
                 onChangeText={(value) =>
                   setState((prevState) => ({ ...prevState, email: value }))
@@ -74,7 +81,12 @@ export default function LoginScreen() {
             </View>
             <View>
               <TextInput
-                style={{ ...styles.input, marginBottom: 0 }}
+                style={{
+                  ...styles.input,
+                  marginBottom: 0,
+                  borderColor:
+                    nameFocusInput == "password" ? "#FF6C00" : "#E8E8E8",
+                }}
                 value={state.password}
                 placeholder="Password"
                 secureTextEntry={isShowPassword}
@@ -83,7 +95,9 @@ export default function LoginScreen() {
                 }
                 onFocus={() => {
                   setIsShowKeyboard(true);
+                  setNameFocusInput("password");
                 }}
+                onBlur={() => setNameFocusInput(null)}
                 onSubmitEditing={keyboardHideWithData}
                 autoCorrect={false}
               />

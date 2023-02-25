@@ -44,7 +44,7 @@ export default function App() {
           }}
           source={require("./assets/bg.jpg")}
         ></ImageBackground>
-        {false ? <RegistrationScreen /> : <LoginScreen />}
+        {true ? <RegistrationScreen /> : <LoginScreen />}
         <StatusBar style="auto" />
         {/* <StatusBar barStyle={"dark-content"} /> */}
       </SafeAreaView>
