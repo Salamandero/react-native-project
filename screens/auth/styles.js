@@ -5,6 +5,13 @@ export const styles = StyleSheet.create({
     backgroundColor: "transparent",
     width: "100%",
   },
+  imageBg: {
+    minHeight: "100%",
+    minWidth: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+  },
   imgUser: {
     width: 120,
     height: 120,
@@ -76,6 +83,7 @@ export const styles = StyleSheet.create({
     top: 15,
     right: 30,
   },
+
   btn: {
     height: 51,
     borderRadius: 100,
