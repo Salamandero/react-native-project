@@ -10,8 +10,6 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  // StatusBar,
-  // SafeAreaView,
   ImageBackground,
 } from "react-native";
 import { styles } from "./styles";
@@ -47,7 +45,6 @@ export default function RegistrationScreen({ navigation }) {
   };
 
   return (
-    // <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
     <TouchableWithoutFeedback onPress={keyboardHideWithData}>
       <View style={styles.container}>
         <KeyboardAvoidingView
@@ -194,7 +191,5 @@ export default function RegistrationScreen({ navigation }) {
         </KeyboardAvoidingView>
       </View>
     </TouchableWithoutFeedback>
-    // <StatusBar style="auto" />
-    // </SafeAreaView>
   );
 }
