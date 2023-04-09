@@ -39,10 +39,23 @@ export const useRoute = (isAuth) => {
     );
   }
   return (
-    <MainTab.Navigator tabBarOptions={{ showLabel: false }}>
+    <MainTab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#FF6C00",
+        tabBarInactiveTintColor: "black",
+        tabBarStyle: [
+          {
+            display: "flex",
+          },
+          null,
+        ],
+        tabBarIcon: ({ color }) => screenOptions(route, color),
+      })}
+    >
       <MainTab.Screen
         options={{
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ size, color }) => (
             <AntDesign name="appstore-o" size={size} color={color} />
           ),
         }}
@@ -52,7 +65,7 @@ export const useRoute = (isAuth) => {
 
       <MainTab.Screen
         options={{
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ size, color }) => (
             <Ionicons name="add-circle-sharp" size={size} color={color} />
           ),
         }}
@@ -62,7 +75,7 @@ export const useRoute = (isAuth) => {
 
       <MainTab.Screen
         options={{
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ size, color }) => (
             <Ionicons name="md-person-outline" size={size} color={color} />
           ),
         }}

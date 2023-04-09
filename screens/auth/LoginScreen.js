@@ -9,8 +9,6 @@ import {
   Alert,
   TouchableOpacity,
   Text,
-  // StatusBar,
-  // SafeAreaView,
   ImageBackground,
 } from "react-native";
 import { styles } from "./styles";
@@ -43,7 +41,6 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    // <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
     <TouchableWithoutFeedback onPress={keyboardHideWithData}>
       <View style={styles.container}>
         <KeyboardAvoidingView
@@ -74,7 +71,7 @@ export default function LoginScreen({ navigation }) {
                       nameFocusInput == "email" ? "#FF6C00" : "#E8E8E8",
                   }}
                   onBlur={() => setNameFocusInput(null)}
-                  textContentType="email"
+                  textContentType="emailAddress"
                   onFocus={() => {
                     setIsShowKeyboard(true);
                     setNameFocusInput("email");
@@ -144,7 +141,5 @@ export default function LoginScreen({ navigation }) {
         </KeyboardAvoidingView>
       </View>
     </TouchableWithoutFeedback>
-    //   <StatusBar style="auto" />
-    // </SafeAreaView>
   );
 }
